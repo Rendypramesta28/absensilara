@@ -12,9 +12,6 @@
             <a href="{{ route('absensi.create') }}" class="btn btn-success">
                 <i class="bi bi-plus-lg"></i> Tambah Absensi
             </a>
-            <a href="{{ route('laporan.cetak') }}" class="btn btn-danger">
-                <i class="bi bi-file-earmark-pdf"></i> Unduh Laporan PDF
-            </a>
         </div>
 
         <div class="table-responsive">

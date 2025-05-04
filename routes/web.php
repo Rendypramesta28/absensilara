@@ -19,3 +19,7 @@ Route::post('/login', [AuthController::class, 'login']);
 //route untuk menkonfigurasi laporan
 Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
 Route::get('/laporan/cetak', [LaporanController::class, 'cetakPDF'])->name('laporan.cetak');
+
+//route untuk rekap absensi bulanan
+Route::get('/rekap-bulanan', [\App\Http\Controllers\RekapController::class, 'index'])->name('rekap.bulanan');
+
