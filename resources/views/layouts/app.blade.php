@@ -196,7 +196,6 @@
     <a href="{{ route('laporan.cetak') }}"><i class="bi bi-file-earmark-arrow-down me-2"></i> Laporan PDF</a>
     <a href="{{ route('kalender.index') }}"><i class="bi bi-calendar3 me-2"></i> Kalender</a>
     <a href="{{ route('bantuan.index') }}"><i class="bi bi-question-circle me-2"></i> Bantuan</a>
-    <a href="{{ route('qr.generate') }}"><i class="bi bi-upc-scan me-2"></i> QR Generator</a>
 </div>
 
 <!-- Main Content -->
