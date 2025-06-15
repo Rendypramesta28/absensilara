@@ -3,7 +3,7 @@
 @section('title', 'Rekap Bulanan')
 
 @section('content')
-<h4>Rekap Absensi Bulanan</h4>
+<h4>Rekap Absensi Bulanan Pegawai</h4>
 
 <form method="GET" class="row g-3 mb-3">
     <div class="col-auto">

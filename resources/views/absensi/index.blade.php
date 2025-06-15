@@ -3,61 +3,60 @@
 @section('title', 'Data Absensi Pegawai')
 
 @section('content')
-<div class="card shadow">
-    <div class="card-header bg-primary text-white text-center">
-        <h3>Data Absensi Pegawai</h3>
+<div class="glass-card">
+    <div class="text-center mb-4">
+        <h3 class="fw-bold text-primary">Data Absensi Pegawai</h3>
     </div>
-    <div class="card-body">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <a href="{{ route('absensi.create') }}" class="btn btn-success">
-                <i class="bi bi-plus-lg"></i> Tambah Absensi
-            </a>
-        </div>
-
-        <div class="table-responsive">
-            <table class="table table-striped table-hover align-middle text-center">
-                <thead class="table-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Nama Pegawai</th>
-                        <th>Jabatan</th>
-                        <th>Waktu Masuk</th>
-                        <th>Waktu Keluar</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($absensis as $absensi)
-                    <tr>
-                        <td>{{ $absensi->pegawai_id }}</td>
-                        <td>{{ $absensi->nama }}</td>
-                        <td>{{ $absensi->jabatan }}</td>
-                        <td>{{ $absensi->waktu_masuk }}</td>
-                        <td>
-                            @if ($absensi->waktu_keluar)
-                                {{ $absensi->waktu_keluar }}
-                            @else
-                                <span class="badge bg-danger badge-status">Belum Pulang</span>
-                            @endif
-                        </td>
-                        <td>
+    <div class="table-responsive">
+        <table class="table align-middle text-center table-hover border rounded shadow-sm overflow-hidden">
+            <thead class="text-white" style="background: linear-gradient(to right, #0ea5e9, #38bdf8);">
+                <tr>
+                    <th>ID</th>
+                    <th>Nama Pegawai</th>
+                    <th>Jabatan</th>
+                    <th>Waktu Masuk</th>
+                    <th>Waktu Keluar</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($absensis as $absensi)
+                <tr style="background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(6px);">
+                    <td>{{ $absensi->id }}</td>
+                    <td class="fw-semibold">{{ $absensi->nama }}</td>
+                    <td>{{ $absensi->jabatan }}</td>
+                    <td>
+                        <span class="badge bg-success">
+                            {{ \Carbon\Carbon::parse($absensi->waktu_masuk)->translatedFormat('l, d F Y H:i:s') }}
+                        </span>
+                    </td>
+                    <td>
+                        @if ($absensi->waktu_keluar)
+                            <span class="badge bg-info text-dark">
+                                {{ \Carbon\Carbon::parse($absensi->waktu_keluar)->translatedFormat('l, d F Y H:i:s') }}
+                            </span>
+                        @else
+                            <span class="badge bg-danger">Belum Pulang</span>
+                        @endif
+                    </td>
+                    <td>
                         <div class="d-flex justify-content-center gap-2">
-                        <a href="{{ route('absensi.edit', $absensi) }}" class="btn btn-warning btn-sm">
-                            <i class="bi bi-pencil-square"></i> Edit
-                        </a>
-                        <form action="{{ route('absensi.destroy', $absensi) }}" method="POST" onsubmit="return confirm('Hapus data ini?')">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm">
-                            <i class="bi bi-trash"></i> Hapus
-                        </button>
-                        </form>
-                    </div>
-                </td>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+                            <a href="{{ route('absensi.edit', $absensi->id) }}" class="btn btn-outline-warning btn-sm shadow-sm">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <form action="{{ route('absensi.destroy', $absensi->id) }}" method="POST" onsubmit="return confirm('Hapus data ini?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-outline-danger btn-sm shadow-sm">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </div>
 @endsection

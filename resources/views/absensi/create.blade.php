@@ -1,40 +1,44 @@
 @extends('layouts.app')
 
+@section('title', 'Tambah Absensi')
+
 @section('content')
-<div class="container">
-    <div class="card shadow-lg">
-        <div class="card-header bg-primary text-white">
-            <h4 class="text-center">Tambah Data Absensi</h4>
-        </div>
-        <div class="card-body">
-            <form action="{{ route('absensi.store') }}" method="POST">
-                @csrf
-                
-                <div class="mb-3">
-                <label for="nama" class="form-label">Nama Pegawai</label>
-                 <input type="text" name="nama" class="form-control" required placeholder="Masukkan Nama Pegawai">
-        </div>
+<div class="glass-card">
+    <h4 class="text-center fw-bold mb-4">
+        <i class="bi bi-plus-circle me-2 text-primary"></i>Tambah Data Absensi
+    </h4>
 
-            <div class="mb-3">
-            <label for="jabatan" class="form-label">Jabatan</label>
-            <input type="text" name="jabatan" class="form-control" required placeholder="Masukkan Jabatan Pegawai">
+    <form action="{{ route('absensi.store') }}" method="POST" class="row g-3">
+        @csrf
+
+        <div class="col-md-6">
+            <label for="nama" class="form-label fw-semibold">Nama Pegawai</label>
+            <input type="text" name="nama" class="form-control" placeholder="Masukkan nama pegawai" required>
         </div>
 
-
-                <div class="mb-3">
-                    <label for="waktu_masuk" class="form-label">Waktu Masuk</label>
-                    <input type="datetime-local" name="waktu_masuk" class="form-control" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="waktu_keluar" class="form-label">Waktu Keluar</label>
-                    <input type="datetime-local" name="waktu_keluar" class="form-control">
-                </div>
-
-                <button type="submit" class="btn btn-success">Simpan</button>
-                <a href="{{ route('absensi.index') }}" class="btn btn-secondary">Batal</a>
-            </form>
+        <div class="col-md-6">
+            <label for="jabatan" class="form-label fw-semibold">Jabatan</label>
+            <input type="text" name="jabatan" class="form-control" placeholder="Masukkan jabatan" required>
         </div>
-    </div>
+
+        <div class="col-md-6">
+            <label for="waktu_masuk" class="form-label fw-semibold">Waktu Masuk</label>
+            <input type="datetime-local" name="waktu_masuk" class="form-control" required>
+        </div>
+
+        <div class="col-md-6">
+            <label for="waktu_keluar" class="form-label fw-semibold">Waktu Keluar</label>
+            <input type="datetime-local" name="waktu_keluar" class="form-control">
+        </div>
+
+        <div class="col-12 mt-3 d-flex justify-content-end gap-2">
+            <a href="{{ route('absensi.index') }}" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left-circle me-1"></i> Batal
+            </a>
+            <button type="submit" class="btn btn-success">
+                <i class="bi bi-save2 me-1"></i> Simpan
+            </button>
+        </div>
+    </form>
 </div>
 @endsection
